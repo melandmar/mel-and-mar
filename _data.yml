@@ -1,0 +1,7 @@
+# Metas plugin https://lume.land/plugins/metas/#description
+metas:
+  site: Mel & Mar
+  description: Stories about a hetero couple.
+  title: "=title"
+  image: "=image"
+  lang: en

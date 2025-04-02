@@ -1,0 +1,29 @@
+.storyList {
+  list-style: none;
+  padding: 0;
+
+  & article.story + article.story {
+    margin-top: var(--row-gap-medium);
+  }
+  & li.story + li.story {
+    margin-top: var(--row-gap-small);
+  }
+
+  & .story-header {
+    margin-bottom: var(--row-gap-xsmall);
+  }
+
+  & .story-details {
+    font: var(--font-small);
+  }
+
+  & .story-title {
+    font: var(--font-title);
+    letter-spacing: var(--font-title-spacing);
+    display: block;
+
+    & a {
+      text-decoration: none;
+    }
+  }
+}

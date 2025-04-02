@@ -1,0 +1,10 @@
+---
+layout: layouts/base.vto
+bodyClass: body-tag
+---
+<header class="page-header">
+  <p><a href="/stories/"> ← Back </a></p>
+  <h1 class="page-title">{{ title }}</h1>
+</header>
+
+{{ include "templates/story-list.vto" { storyList: search.pages(search_query) } }}

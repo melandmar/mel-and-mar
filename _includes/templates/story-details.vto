@@ -1,0 +1,19 @@
+<div class="story-details">
+  <p>
+    <time datetime="{{ date |> date("DEFAULT") }}">
+      {{ date |> date("DEFAULT") }}
+    </time>
+  </p>
+
+  <p>{{ it.readingInfo.minutes }} min read</p>
+
+  <div class="story-tags">
+    {{ for tag of tags }}
+      {{ set page = search.page(`type=tag tag="${tag}"`) }}
+
+      {{ if page }}
+        <a data-pagefind-filter="filter" class="badge" href="{{ page.url }}">{{ tag }}</a>
+      {{ /if }}
+    {{ /for }}
+  </div>
+</div>

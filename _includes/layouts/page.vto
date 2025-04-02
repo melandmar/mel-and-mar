@@ -1,0 +1,15 @@
+---
+layout: layouts/base.vto
+bodyClass: body-tag
+---
+<article class="story" data-pagefind-body>
+  <header class="story-header">
+    <h1 class="story-title">{{ it.title }}</h1>
+
+    {{ it.subtitle |> md }}
+  </header>
+
+  <div class="story-body">
+    {{ content }}
+  </div>
+</article>

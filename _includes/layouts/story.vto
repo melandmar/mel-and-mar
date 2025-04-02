@@ -1,0 +1,64 @@
+---
+layout: layouts/base.vto
+bodyClass: body-story
+---
+<article class="story" data-pagefind-body data-title="{{ title }}" data-pagefind-index-attrs="data-title">
+  <header class="story-header">
+    <h1 class="story-title">{{ title }}</h1>
+
+    {{ include "templates/story-details.vto" }}
+  </header>
+
+  <div class="story-body body">
+    {{ content }}
+  </div>
+
+  {{ if it.footnotes.length }}
+  <aside role="note" class="footnotes">
+    <dl>
+      {{ for note of footnotes }}
+      <div id="{{ note.id }}" class="footnote">
+        <dt><a href="#{{ note.refId }}">{{ note.label }}</a></dt>
+        <dd>{{ note.content }}</dd>
+      </div>
+      {{ /for }}
+    </dl>
+  </aside>
+  {{ /if }}
+
+  {{ if comments?.src }}
+  <aside class="comments-section">
+    <header class="comments-header">
+      <h2>Comments</h2>
+      <p>You can leave a comment by replying to <a href="{{comments.src}}">this Mastodon post</a> from your own account on Mastodon or any other ActivityPub-capable social network that can exchange replies with Mastodon.</p>
+    </header>
+    <mastodon-comments mastodon="{{ it.comments.src }}" cache="{{ it.comments.cache ?? 60 }}" class="comments">
+      No comments yet.
+    </mastodon-comments>
+  </aside>
+  {{ /if }}
+</article>
+
+<nav class="page-pagination pagination">
+  <ul>
+    {{- set previousStory = search.previousPage(url, "type=story") }}
+    {{- if previousStory }}
+    <li class="pagination-prev">
+      <a href="{{ previousStory.url }}" rel="prev">
+        <span>← Older story</span>
+        <strong>{{ previousStory.title }}</strong>
+      </a>
+    </li>
+    {{ /if }}
+
+    {{- set nextStory = search.nextPage(url, "type=story") }}
+    {{- if nextStory }}
+    <li class="pagination-next">
+      <a href="{{ nextStory.url }}" rel="next">
+        <span>Newer story →</span>
+        <strong>{{ nextStory.title }}</strong>
+      </a>
+    </li>
+    {{ /if }}
+  </ul>
+</nav>

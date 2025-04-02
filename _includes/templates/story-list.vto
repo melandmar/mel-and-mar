@@ -1,0 +1,17 @@
+<ul class="storyList">
+  {{ for story of storyList }}
+  <li class="story">
+    <h2 class="story-title">
+      <a href="{{ story.url }}" {{ if story.url == url }} aria-current="page"{{ /if }}>
+        {{ story.title || story.url }}
+      </a>
+    </h2>
+
+    {{ include "templates/story-details.vto" {
+      date: story.date,
+      tags: story.tags,
+      readingInfo: story.readingInfo
+    } }}
+  </li>
+  {{ /for }}
+</ul>
